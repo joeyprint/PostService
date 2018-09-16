@@ -1,5 +1,7 @@
 package me.wasin.PostService;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -21,10 +23,11 @@ public class Post {
     @NotBlank
     private String description;
 
-
+    @CreationTimestamp
     @CreatedDate
     private Date created_at;
 
+    @UpdateTimestamp
     @LastModifiedDate
     private Date updated_at;
 

@@ -20,6 +20,6 @@ public class PostService {
     }
 
 //    public Post getPostById(Post post) {
-//        return postRepository.findById(post);
+//        return postRepository.findById(post.getId());
 //    }
 }

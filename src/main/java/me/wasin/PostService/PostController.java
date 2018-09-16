@@ -23,7 +23,7 @@ public class PostController {
 //    @RequestMapping(value = "/post/{post_id:[\\d]}", method = RequestMethod.GET)
 //    public ResponseEntity<List<Post>> getPost(@PathVariable(name = "id") int id) {
 //        Post post = postService.getPostById();
-//        return new ResponseEntity<Post>(post, HttpStatus.OK);
+//        return new ResponseEntity<List<Post>>(post, HttpStatus.OK);
 //    }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)

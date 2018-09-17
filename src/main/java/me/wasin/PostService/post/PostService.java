@@ -1,4 +1,4 @@
-package me.wasin.PostService;
+package me.wasin.PostService.post;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

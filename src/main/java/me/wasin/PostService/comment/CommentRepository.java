@@ -1,9 +1,9 @@
-package me.wasin.PostService;
+package me.wasin.PostService.comment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PostRepository extends JpaRepository<Post, Integer> {
+public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
 }

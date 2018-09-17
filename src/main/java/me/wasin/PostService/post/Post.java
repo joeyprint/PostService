@@ -1,17 +1,23 @@
-package me.wasin.PostService;
+package me.wasin.PostService.post;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "posts")
-public class Post {
+@EntityListeners(AuditingEntityListener.class)
+//@JsonIgnoreProperties(
+//        value = {"createdAt", "updatedAt"},
+//        allowGetters = true
+//)
+public class Post implements Serializable {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
@@ -23,13 +29,10 @@ public class Post {
     @NotBlank
     private String description;
 
-    @CreationTimestamp
     @CreatedDate
-    private Date created_at;
-
-    @UpdateTimestamp
-    @LastModifiedDate
-    private Date updated_at;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date createdAt;
 
     public Post() {
         super();
@@ -52,12 +55,8 @@ public class Post {
         this.description = description;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public int getId() {
@@ -72,11 +71,8 @@ public class Post {
         return description;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public Date getUpdated_at() {
-        return updated_at;
-    }
 }

@@ -1,11 +1,14 @@
 package me.wasin.PostService.user;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +19,10 @@ public class User {
 
     @NotBlank
     private String lastname;
+
+    public User() {
+        super();
+    }
 
     public User( String firstname, String lastname) {
         this.firstname = firstname;

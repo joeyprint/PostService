@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -15,11 +16,12 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public Optional<Post> getPostById(int id) {
+        return postRepository.findById(id);
+    }
+
     public Post createPost(Post post) {
         return postRepository.save(post);
     }
 
-//    public Post getPostById(Post post) {
-//        return postRepository.findById(post.getId());
-//    }
 }

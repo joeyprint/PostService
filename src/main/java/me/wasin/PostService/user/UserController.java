@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -18,6 +19,12 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUser () {
         List<User> users = userService.getAllUser();
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/user/{user_id:[\\d]}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<User>> getUser (@PathVariable (name = "user_id") int id) {
+        Optional<User> user = userService.getUserById(id);
+        return new ResponseEntity<Optional<User>>(user, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user", method= RequestMethod.POST)

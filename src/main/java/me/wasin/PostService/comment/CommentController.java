@@ -3,13 +3,11 @@ package me.wasin.PostService.comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CommentController {
@@ -18,9 +16,15 @@ public class CommentController {
     private CommentService commentService;
 
     @RequestMapping(value = "/comments", method = RequestMethod.GET)
-    public ResponseEntity<List<Comment>> getAllPost() {
-        List<Comment> posts = commentService.getAllPost();
-        return new ResponseEntity<List<Comment>>(posts, HttpStatus.OK);
+    public ResponseEntity<List<Comment>> getAllComment() {
+        List<Comment> comments = commentService.getAllComment();
+        return new ResponseEntity<List<Comment>>(comments, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/comment/{comment_id:[\\d]}", method = RequestMethod.GET)
+    public ResponseEntity<Optional<Comment>> getCommebt (@PathVariable (name = "comment_id") int id) {
+        Optional<Comment> comment = commentService.getCommebtById(id);
+        return new ResponseEntity<Optional<Comment>>(comment, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)

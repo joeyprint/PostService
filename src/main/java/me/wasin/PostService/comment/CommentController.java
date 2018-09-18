@@ -24,9 +24,9 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public ResponseEntity<Comment> createPost(@Valid @RequestBody Comment post) {
-        Comment post_object = commentService.createComment(post);
-        return new ResponseEntity<Comment>(post_object, HttpStatus.OK);
+    public ResponseEntity<Comment> createPost(@Valid @RequestBody Comment comment) {
+        Comment comment_object = commentService.createComment(comment);
+        return new ResponseEntity<Comment>(comment_object, HttpStatus.OK);
     }
 
 }

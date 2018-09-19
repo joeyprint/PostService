@@ -22,9 +22,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/{user_id:[\\d]}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<User>> getUser (@PathVariable (name = "user_id") int id) {
-        Optional<User> user = userService.getUserById(id);
-        return new ResponseEntity<Optional<User>>(user, HttpStatus.OK);
+    public ResponseEntity<User> getUser (@PathVariable (name = "user_id") int id) {
+        User user = userService.getUserById(id);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/user", method= RequestMethod.POST)

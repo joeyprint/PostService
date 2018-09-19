@@ -22,9 +22,9 @@ public class PostController {
     }
 
     @RequestMapping(value = "/post/{post_id:[\\d]}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Post>> getPost(@PathVariable(name = "post_id") int id) {
-        Optional<Post> post = postService.getPostById(id);
-        return new ResponseEntity<Optional<Post>>(post, HttpStatus.OK);
+    public ResponseEntity<Post> getPost(@PathVariable(name = "post_id") int id) {
+        Post post = postService.getPostById(id);
+        return new ResponseEntity<Post>(post, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/post", method = RequestMethod.POST)

@@ -22,9 +22,9 @@ public class CommentController {
     }
 
     @RequestMapping(value = "/comment/{comment_id:[\\d]}", method = RequestMethod.GET)
-    public ResponseEntity<Optional<Comment>> getCommebt (@PathVariable (name = "comment_id") int id) {
-        Optional<Comment> comment = commentService.getCommebtById(id);
-        return new ResponseEntity<Optional<Comment>>(comment, HttpStatus.OK);
+    public ResponseEntity<Comment> getComment (@PathVariable (name = "comment_id") int id) {
+        Comment comment = commentService.getCommentById(id);
+        return new ResponseEntity<Comment>(comment, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)

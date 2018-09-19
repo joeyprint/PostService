@@ -19,10 +19,10 @@ public class Comment implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "post_id", nullable = false)
-//    @JsonIgnore
-//    private Post post;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id", nullable = false)
+    @JsonIgnore
+    private Post post;
 
     @NotBlank
     private String comment;
@@ -36,12 +36,10 @@ public class Comment implements Serializable {
         super();
     }
 
-
-
-//    public Comment(Post post, @NotBlank String comment) {
-//        this.post = post;
-//        this.comment = comment;
-//    }
+    public Comment(Post post, @NotBlank String comment) {
+        this.post = post;
+        this.comment = comment;
+    }
 
     public Comment(@NotBlank String comment) {
         this.comment = comment;
@@ -51,9 +49,9 @@ public class Comment implements Serializable {
         this.id = id;
     }
 
-//    public void setPost(Post post) {
-//        this.post = post;
-//    }
+    public void setPost(Post post) {
+        this.post = post;
+    }
 
     public void setComment(String comment) {
         this.comment = comment;
@@ -67,9 +65,9 @@ public class Comment implements Serializable {
         return id;
     }
 
-//    public Post getPost() {
-//        return post;
-//    }
+    public Post getPost() {
+        return post;
+    }
 
     public String getComment() {
         return comment;

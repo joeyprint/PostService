@@ -1,5 +1,6 @@
 package me.wasin.PostService.comment;
 
+import me.wasin.PostService.post.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,10 @@ public class CommentService {
         return commentRepository.findById(id);
     }
 
-    public Comment createComment(Comment comment) {
+    public Comment createComment(Comment comment, int postId) {
+        Post post = new Post();
+        post.setId(postId);
+        comment.setPost(post);
         return commentRepository.save(comment);
     }
 

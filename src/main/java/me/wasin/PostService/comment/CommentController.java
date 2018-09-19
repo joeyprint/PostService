@@ -1,5 +1,7 @@
 package me.wasin.PostService.comment;
 
+import me.wasin.PostService.post.PostRepository;
+import me.wasin.PostService.post.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class CommentController {
@@ -27,9 +28,9 @@ public class CommentController {
         return new ResponseEntity<Comment>(comment, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public ResponseEntity<Comment> createPost(@Valid @RequestBody Comment comment) {
-        Comment comment_object = commentService.createComment(comment);
+    @RequestMapping(value = "/post/{post_id:[\\d]}/comment", method = RequestMethod.POST)
+    public ResponseEntity<Comment> createCommentInPost (@PathVariable(name = "post_id") int id, @Valid @RequestBody Comment comment) {
+        Comment comment_object = commentService.createComment(comment, id);
         return new ResponseEntity<Comment>(comment_object, HttpStatus.OK);
     }
 

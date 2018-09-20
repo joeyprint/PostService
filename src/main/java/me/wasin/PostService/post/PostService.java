@@ -1,10 +1,10 @@
 package me.wasin.PostService.post;
 
+import me.wasin.PostService.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PostService {
@@ -21,6 +21,13 @@ public class PostService {
     }
 
     public Post createPost(Post post) {
+        return postRepository.save(post);
+    }
+
+    public Post createPost(Post post, int userId) {
+        User user = new User();
+        user.setId(userId);
+        post.setUser(user);
         return postRepository.save(post);
     }
 

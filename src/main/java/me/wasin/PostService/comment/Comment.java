@@ -2,6 +2,7 @@ package me.wasin.PostService.comment;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import me.wasin.PostService.post.Post;
+import me.wasin.PostService.user.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -23,6 +24,10 @@ public class Comment implements Serializable {
     @JoinColumn(name = "post_id", nullable = false)
     @JsonIgnore
     private Post post;
+
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
     @NotBlank
     private String comment;
@@ -53,6 +58,10 @@ public class Comment implements Serializable {
         this.post = post;
     }
 
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
     public void setComment(String comment) {
         this.comment = comment;
     }
@@ -68,6 +77,10 @@ public class Comment implements Serializable {
     public Post getPost() {
         return post;
     }
+
+//    public User getUser() {
+//        return user;
+//    }
 
     public String getComment() {
         return comment;

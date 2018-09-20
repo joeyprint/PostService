@@ -27,9 +27,9 @@ public class PostController {
         return new ResponseEntity<Post>(post, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
-    public ResponseEntity<Post> createPost(@Valid @RequestBody Post post) {
-        Post post_object = postService.createPost(post);
+    @RequestMapping(value = "/user/{user_id:[\\d]}/post", method = RequestMethod.POST)
+    public ResponseEntity<Post> createPost(@PathVariable(name = "user_id") int userId, @Valid @RequestBody Post post) {
+        Post post_object = postService.createPost(post, userId);
         return new ResponseEntity<Post>(post_object, HttpStatus.OK);
     }
 

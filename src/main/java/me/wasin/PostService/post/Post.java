@@ -1,6 +1,8 @@
 package me.wasin.PostService.post;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import me.wasin.PostService.user.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -22,6 +24,11 @@ public class Post implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
 
     @NotBlank
     private String title;
@@ -47,6 +54,10 @@ public class Post implements Serializable {
         this.id = id;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -61,6 +72,10 @@ public class Post implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public String getTitle() {

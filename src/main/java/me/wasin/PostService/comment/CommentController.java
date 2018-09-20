@@ -28,18 +28,12 @@ public class CommentController {
         return new ResponseEntity<Comment>(comment, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/post/{post_id:[\\d]}/comment", method = RequestMethod.POST)
-    public ResponseEntity<Comment> createCommentInPost (@PathVariable(name = "post_id") int postId, @Valid @RequestBody Comment comment) {
-        Comment comment_object = commentService.createComment(comment, postId);
+    @RequestMapping(value = "/user/{user_id:[\\d]}/post/{post_id:[\\d]}/comment", method = RequestMethod.POST)
+    public ResponseEntity<Comment> createCommentInPost (@PathVariable(name = "user_id") int userId,
+                                                        @PathVariable(name = "post_id") int postId,
+                                                        @Valid @RequestBody Comment comment) {
+        Comment comment_object = commentService.createComment(comment, postId, userId);
         return new ResponseEntity<Comment>(comment_object, HttpStatus.OK);
     }
-
-//    @RequestMapping(value = "/user/{user_id:[\\d]}/post/{post_id:[\\d]}/comment", method = RequestMethod.POST)
-//    public ResponseEntity<Comment> createCommentInPost (@PathVariable(name = "post_id") int postId,
-//                                                        @PathVariable(name = "user_id") int userId,
-//                                                        @Valid @RequestBody Comment comment) {
-//        Comment comment_object = commentService.createComment(comment, postId, userId);
-//        return new ResponseEntity<Comment>(comment_object, HttpStatus.OK);
-//    }
 
 }

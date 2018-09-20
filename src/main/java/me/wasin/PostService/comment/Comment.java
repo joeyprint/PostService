@@ -25,9 +25,10 @@ public class Comment implements Serializable {
     @JsonIgnore
     private Post post;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
 
     @NotBlank
     private String comment;
@@ -58,9 +59,9 @@ public class Comment implements Serializable {
         this.post = post;
     }
 
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setComment(String comment) {
         this.comment = comment;
@@ -78,9 +79,9 @@ public class Comment implements Serializable {
         return post;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
+    public User getUser() {
+        return user;
+    }
 
     public String getComment() {
         return comment;

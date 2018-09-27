@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "a474d50f-34bd-46ef-a007-3189613507fe",
+		"name": "Post Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fc98aa7-24b0-404f-9f92-0e60bbc373e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response OK?\"] = responseCode.code === 200;",
+							"pm.test(\"Username == Patric?\",function(){",
+							"    var jsonData = pm.response.json();",
+							"    var firstName = jsonData.firstName;",
+							"    var lastName = jsonData.lastName;",
+							"    pm.expect(firstName).to.eql(\"Patric\");",
+							"    pm.expect(lastName).to.eql(\"Emmel\");",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Kunlakarn\",\n\t\"lastname\":\"Techavinich\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"Test Create Post with user 1\",\n\t\"description\" : \"Lorem Ipsum initial\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/user/1/post",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comment\" : \"Test User 2 Comment Post of User 1\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/user/2/post/1/comment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"2",
+						"post",
+						"1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/post/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"post",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comment by post_id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/post/1/comment",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"post",
+						"1",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fc98aa7-24b0-404f-9f92-0e60bbc373e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response OK?\"] = responseCode.code === 200;",
+							"pm.test(\"Username == Patric?\",function(){",
+							"    var jsonData = pm.response.json();",
+							"    var firstName = jsonData.firstName;",
+							"    var lastName = jsonData.lastName;",
+							"    pm.expect(firstName).to.eql(\"Patric\");",
+							"    pm.expect(lastName).to.eql(\"Emmel\");",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Kunlakarn\",\n\t\"lastname\":\"Techavinich\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Comments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fc98aa7-24b0-404f-9f92-0e60bbc373e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response OK?\"] = responseCode.code === 200;",
+							"pm.test(\"Username == Patric?\",function(){",
+							"    var jsonData = pm.response.json();",
+							"    var firstName = jsonData.firstName;",
+							"    var lastName = jsonData.lastName;",
+							"    pm.expect(firstName).to.eql(\"Patric\");",
+							"    pm.expect(lastName).to.eql(\"Emmel\");",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Kunlakarn\",\n\t\"lastname\":\"Techavinich\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/comments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fc98aa7-24b0-404f-9f92-0e60bbc373e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response OK?\"] = responseCode.code === 200;",
+							"pm.test(\"Username == Patric?\",function(){",
+							"    var jsonData = pm.response.json();",
+							"    var firstName = jsonData.firstName;",
+							"    var lastName = jsonData.lastName;",
+							"    pm.expect(firstName).to.eql(\"Patric\");",
+							"    pm.expect(lastName).to.eql(\"Emmel\");",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Kunlakarn\",\n\t\"lastname\":\"Techavinich\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/comment/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comment",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3fc98aa7-24b0-404f-9f92-0e60bbc373e9",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response OK?\"] = responseCode.code === 200;",
+							"pm.test(\"Username == Patric?\",function(){",
+							"    var jsonData = pm.response.json();",
+							"    var firstName = jsonData.firstName;",
+							"    var lastName = jsonData.lastName;",
+							"    pm.expect(firstName).to.eql(\"Patric\");",
+							"    pm.expect(lastName).to.eql(\"Emmel\");",
+							"})"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"firstname\":\"Kunlakarn\",\n\t\"lastname\":\"Techavinich\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/user/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

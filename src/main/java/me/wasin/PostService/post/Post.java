@@ -15,8 +15,8 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "posts")
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "posts")
 //@JsonIgnoreProperties(
 //        value = {"createdAt", "updatedAt"},
 //        allowGetters = true
@@ -29,7 +29,6 @@ public class Post implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore
     private User user;
 
     @NotBlank
@@ -63,6 +62,14 @@ public class Post implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Comment> getComment() {
+        return comment;
+    }
+
+    public void setComment(List<Comment> comment) {
+        this.comment = comment;
     }
 
     public void setTitle(String title) {

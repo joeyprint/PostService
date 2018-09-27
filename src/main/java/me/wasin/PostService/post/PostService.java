@@ -1,5 +1,8 @@
 package me.wasin.PostService.post;
 
+import me.wasin.PostService.comment.Comment;
+import me.wasin.PostService.comment.CommentRepository;
+import me.wasin.PostService.comment.CommentService;
 import me.wasin.PostService.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

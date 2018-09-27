@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class PostController {
@@ -18,11 +17,11 @@ public class PostController {
     @RequestMapping(value = "/posts", method = RequestMethod.GET)
     public ResponseEntity<List<Post>> getAllPost() {
         List<Post> posts = postService.getAllPost();
-        return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/post/{post_id:[\\d]}", method = RequestMethod.GET)
-    public ResponseEntity<Post> getPost(@PathVariable(name = "post_id") int id) {
+    public ResponseEntity<Post> getAPostWithComment(@PathVariable(name = "post_id") int id) {
         Post post = postService.getPostById(id);
         return new ResponseEntity<Post>(post, HttpStatus.OK);
     }

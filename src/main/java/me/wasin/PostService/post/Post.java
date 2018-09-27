@@ -2,6 +2,7 @@ package me.wasin.PostService.post;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import me.wasin.PostService.comment.Comment;
 import me.wasin.PostService.user.User;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -11,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -35,6 +37,11 @@ public class Post implements Serializable {
 
     @NotBlank
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "post")
+    private List<Comment> comment;
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)

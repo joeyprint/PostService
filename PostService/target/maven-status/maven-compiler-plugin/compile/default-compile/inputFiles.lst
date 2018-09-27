@@ -1,0 +1,13 @@
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/post/Post.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/post/PostService.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/comment/CommentRepository.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/user/UserRepository.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/post/PostController.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/comment/CommentService.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/user/UserController.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/user/UserService.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/post/PostRepository.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/comment/CommentController.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/comment/Comment.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/PostServiceApplication.java
+/Users/wasin/Documents/KMUTT/CloudNative/PostService/PostService/src/main/java/me/wasin/PostService/user/User.java

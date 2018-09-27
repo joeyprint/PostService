@@ -1,5 +1,6 @@
 package me.wasin.PostService.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -8,6 +9,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements Serializable {
 
     @Id

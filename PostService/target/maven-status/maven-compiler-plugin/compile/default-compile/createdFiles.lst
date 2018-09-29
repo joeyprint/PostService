@@ -3,11 +3,10 @@ me/wasin/PostService/user/User.class
 me/wasin/PostService/post/PostService.class
 me/wasin/PostService/PostServiceApplication.class
 me/wasin/PostService/post/Post.class
-me/wasin/PostService/user/UserRepository.class
+me/wasin/PostService/user/UserAdapter.class
 me/wasin/PostService/user/UserController.class
 me/wasin/PostService/comment/CommentService.class
 me/wasin/PostService/post/PostController.class
 me/wasin/PostService/comment/CommentController.class
 me/wasin/PostService/comment/CommentRepository.class
 me/wasin/PostService/post/PostRepository.class
-me/wasin/PostService/user/UserService.class

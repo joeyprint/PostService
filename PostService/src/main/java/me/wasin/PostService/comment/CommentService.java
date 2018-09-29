@@ -3,7 +3,7 @@ package me.wasin.PostService.comment;
 import me.wasin.PostService.post.Post;
 import me.wasin.PostService.post.PostService;
 import me.wasin.PostService.user.User;
-import me.wasin.PostService.user.UserService;
+import me.wasin.PostService.user.UserAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class CommentService {
     private PostService postService;
 
     @Autowired
-    private UserService userService;
+    private UserAdapter userAdapter;
 
     public List<Comment> getAllComment() {
         return commentRepository.findAll();
@@ -35,7 +35,7 @@ public class CommentService {
 
     public Comment createComment(Comment comment, int postId, int userId) {
         Post post = postService.getPostById(postId);
-        User user = userService.getUserById(userId);
+        User user = userAdapter.getUserDetail(userId);
         comment.setPost(post);
         comment.setUser(user);
         return commentRepository.save(comment);
